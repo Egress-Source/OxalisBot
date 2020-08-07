@@ -15,4 +15,13 @@ client = commands.Bot(command_prefix="?")
 async def status(ctx: commands.Context):
     await ctx.send(str(subprocess.run("papermc status | grep Status", stdout=subprocess.PIPE, shell=True).stdout, "utf-8"))
 
-client.run(supersecretstuff)
+
+@client.command()
+@commands.has_any_role(733773680147955833, 733558343209320470, 741095502791311410)
+async def verify(ctx: commands.Context, member: discord.Member):
+    if isinstance(member, discord.Member):
+        guild: discord.Guild = ctx.guild
+        await member.add_roles(guild.get_role(733558721736736810))
+
+
+client.run(supersecretstuff["token"])
