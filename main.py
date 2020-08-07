@@ -21,6 +21,12 @@ async def verify(ctx: commands.Context, member: discord.Member):
     if isinstance(member, discord.Member):
         guild: discord.Guild = ctx.guild
         await member.add_roles(guild.get_role(733558721736736810))
+        await member.remove_roles(guild.get_role(734260573453418499))
+
+
+@client.event
+async def on_member_join(member: discord.Member):
+    await member.add_roles(member.guild.get_role(734260573453418499))
 
 
 client.run(supersecretstuff["token"])
