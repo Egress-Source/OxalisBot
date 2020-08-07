@@ -11,6 +11,7 @@ client = commands.Bot(command_prefix="?")
 
 
 @client.command()
+'''Get Oxalis Minecraft server status'''
 async def status(ctx: commands.Context):
     await ctx.send(str(subprocess.run("papermc status | grep Status", stdout=subprocess.PIPE, shell=True).stdout, "utf-8"))
 
