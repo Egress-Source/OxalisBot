@@ -15,10 +15,17 @@ async def status(ctx: commands.Context):
     """Get Oxalis Minecraft server status"""
     await ctx.send(str(subprocess.run("papermc status | grep Status", stdout=subprocess.PIPE, shell=True).stdout, "utf-8"))
 
+@client.command()
+async def whitelist(ctx: commands.Context, username):
+    """Whitelist a minecraft username"""
+    subprocess.run("papermc command whitelist add " + str(username), shell=True).stdout, "utf-8")
+    await ctx.send(f"```Added {username} to whitelist!```")
+
 
 @client.command()
 @commands.has_any_role(733773680147955833, 733558343209320470, 741095502791311410)
 async def verify(ctx: commands.Context, member: discord.Member):
+    """Verify a member"""
     if isinstance(member, discord.Member):
         guild: discord.Guild = ctx.guild
         await member.add_roles(guild.get_role(733558721736736810))
