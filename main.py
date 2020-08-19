@@ -7,7 +7,7 @@ from discord.ext import commands
 supersecretstuff = json.loads(open("secrets.json").read())
 
 
-client = commands.Bot(command_prefix="?")
+client = commands.Bot(command_prefix="?", "!")
 
 
 @client.command()
